@@ -19,7 +19,9 @@ export async function POST(req: NextRequest) {
   }
 
   if (event.type === "checkout.session.completed") {
-    const session = event.data.object;
+    const session = event.data.object as typeof event.data.object & {
+      shipping_details?: { name?: string | null; address?: object | null } | null;
+    };
 
     await supabaseAdmin
       .from("orders")
