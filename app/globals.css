@@ -49,4 +49,19 @@ body {
   .badge {
     @apply inline-block bg-primary/10 text-primary text-sm font-medium px-3 py-1 rounded-full;
   }
+
+  /* ScrollReveal */
+  .reveal {
+    opacity: 0;
+    transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .reveal-fade-up    { transform: translateY(36px); }
+  .reveal-fade-in    { transform: none; }
+  .reveal-slide-left { transform: translateX(-40px); }
+  .reveal-slide-right{ transform: translateX(40px); }
+
+  .reveal-visible {
+    opacity: 1;
+    transform: translate(0, 0) !important;
+  }
 }

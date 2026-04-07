@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ArrowRight, ShieldCheck } from "lucide-react";
+import MagneticButton from "@/components/MagneticButton";
 
 export default function Hero() {
   return (
@@ -32,16 +33,16 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
-              <a
+              <MagneticButton
                 href="https://www.drhittich.com/index.php?cl=register"
                 className="btn-primary"
               >
                 Jetzt entdecken
                 <ArrowRight size={18} />
-              </a>
-              <a href="#about" className="btn-outline">
+              </MagneticButton>
+              <MagneticButton href="#about" className="btn-outline">
                 Mehr erfahren
-              </a>
+              </MagneticButton>
             </div>
 
             {/* Trust badges */}

@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import ScrollReveal from "@/components/ScrollReveal";
+import MagneticButton from "@/components/MagneticButton";
 
 const products = [
   {
@@ -28,7 +30,7 @@ export default function Products() {
   return (
     <section id="products" className="section-padding bg-neutral-50">
       <div className="section-container">
-        <div className="text-center mb-12">
+        <ScrollReveal animation="fade-up" className="text-center mb-12">
           <div className="badge mb-4">Neue Mittel</div>
           <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4">
             Neue Dr. Hittich-Mittel{" "}
@@ -37,43 +39,42 @@ export default function Products() {
           <p className="text-neutral-500 max-w-xl mx-auto">
             Alle Produkte aus 100 % Naturstoffen — direkt vom Entwickler und Hersteller, nicht im Massenhandel erhältlich.
           </p>
-        </div>
+        </ScrollReveal>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((product) => (
-            <div
-              key={product.name}
-              className="card group hover:border-primary/20 flex flex-col"
-            >
-              <div className="relative aspect-square rounded-xl overflow-hidden mb-4 bg-neutral-100">
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                />
+          {products.map((product, i) => (
+            <ScrollReveal key={product.name} animation="fade-up" delay={i * 100}>
+              <div className="card group hover:border-primary/20 flex flex-col h-full">
+                <div className="relative aspect-square rounded-xl overflow-hidden mb-4 bg-neutral-100">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <h3 className="font-bold text-neutral-900 text-lg mb-2">{product.name}</h3>
+                <p className="text-sm text-neutral-500 leading-relaxed flex-1">{product.description}</p>
+                <a
+                  href="https://www.drhittich.com"
+                  className="mt-4 flex items-center gap-1 text-sm font-medium text-primary hover:gap-2 transition-all"
+                >
+                  Mehr erfahren <ArrowRight size={16} />
+                </a>
               </div>
-              <h3 className="font-bold text-neutral-900 text-lg mb-2">{product.name}</h3>
-              <p className="text-sm text-neutral-500 leading-relaxed flex-1">{product.description}</p>
-              <a
-                href="https://www.drhittich.com"
-                className="mt-4 flex items-center gap-1 text-sm font-medium text-primary hover:gap-2 transition-all"
-              >
-                Mehr erfahren <ArrowRight size={16} />
-              </a>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
 
-        <div className="text-center mt-10">
-          <a
+        <ScrollReveal animation="fade-up" delay={200} className="text-center mt-10">
+          <MagneticButton
             href="https://www.drhittich.com"
             className="btn-primary"
           >
             Alle Dr. Hittich-Mittel von A bis Z
             <ArrowRight size={18} />
-          </a>
-        </div>
+          </MagneticButton>
+        </ScrollReveal>
       </div>
     </section>
   );

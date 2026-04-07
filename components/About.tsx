@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Leaf, Award, Users } from "lucide-react";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const pillars = [
   {
@@ -28,7 +29,7 @@ export default function About() {
       <div className="section-container">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           {/* Image */}
-          <div className="relative order-2 md:order-1">
+          <ScrollReveal animation="slide-left" className="relative order-2 md:order-1">
             <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-[3/4]">
               <Image
                 src="https://www.drhittich.com/out/dd_apex_drhittich/img/intelligenz-der-natur-side.jpg"
@@ -41,10 +42,10 @@ export default function About() {
               <div className="text-3xl font-bold">30+</div>
               <div className="text-sm opacity-90">Jahre Erfahrung</div>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Text */}
-          <div className="order-1 md:order-2">
+          <ScrollReveal animation="slide-right" className="order-1 md:order-2">
             <div className="badge mb-4">Über Dr. Hittich</div>
             <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-6 leading-tight">
               Gesundheit aus der{" "}
@@ -57,19 +58,21 @@ export default function About() {
             </p>
 
             <div className="flex flex-col gap-6">
-              {pillars.map(({ icon: Icon, title, description }) => (
-                <div key={title} className="flex gap-4">
-                  <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Icon size={20} className="text-primary" />
+              {pillars.map(({ icon: Icon, title, description }, i) => (
+                <ScrollReveal key={title} animation="fade-up" delay={i * 120}>
+                  <div className="flex gap-4">
+                    <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Icon size={20} className="text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-neutral-900 mb-1">{title}</h3>
+                      <p className="text-sm text-neutral-500 leading-relaxed">{description}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-neutral-900 mb-1">{title}</h3>
-                    <p className="text-sm text-neutral-500 leading-relaxed">{description}</p>
-                  </div>
-                </div>
+                </ScrollReveal>
               ))}
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

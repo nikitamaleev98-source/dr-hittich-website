@@ -1,4 +1,5 @@
 import { ShieldCheck, Clock, Truck, Heart } from "lucide-react";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const guarantees = [
   {
@@ -35,7 +36,7 @@ export default function Guarantee() {
   return (
     <section id="guarantee" className="section-padding bg-white">
       <div className="section-container">
-        <div className="text-center mb-12">
+        <ScrollReveal animation="fade-up" className="text-center mb-12">
           <div className="badge mb-4">Ihre Sicherheit</div>
           <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4">
             Ihre Vorteile bei{" "}
@@ -44,32 +45,33 @@ export default function Guarantee() {
           <p className="text-neutral-500 max-w-xl mx-auto">
             Sie haben die absolute Sicherheit, dass Sie bei jedem Mittel sinnvoll in Ihre Gesundheit investieren.
           </p>
-        </div>
+        </ScrollReveal>
 
         <div className="grid sm:grid-cols-2 gap-6">
-          {guarantees.map(({ icon: Icon, title, description, highlight }) => (
-            <div
-              key={title}
-              className={`rounded-2xl p-6 border ${
-                highlight
-                  ? "bg-primary text-white border-primary shadow-lg shadow-primary/20"
-                  : "bg-neutral-50 text-neutral-900 border-neutral-100"
-              }`}
-            >
+          {guarantees.map(({ icon: Icon, title, description, highlight }, i) => (
+            <ScrollReveal key={title} animation="fade-up" delay={i * 100}>
               <div
-                className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${
-                  highlight ? "bg-white/20" : "bg-primary/10"
+                className={`rounded-2xl p-6 border h-full ${
+                  highlight
+                    ? "bg-primary text-white border-primary shadow-lg shadow-primary/20"
+                    : "bg-neutral-50 text-neutral-900 border-neutral-100"
                 }`}
               >
-                <Icon size={24} className={highlight ? "text-white" : "text-primary"} />
+                <div
+                  className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${
+                    highlight ? "bg-white/20" : "bg-primary/10"
+                  }`}
+                >
+                  <Icon size={24} className={highlight ? "text-white" : "text-primary"} />
+                </div>
+                <h3 className={`font-bold text-lg mb-2 ${highlight ? "text-white" : "text-neutral-900"}`}>
+                  {title}
+                </h3>
+                <p className={`text-sm leading-relaxed ${highlight ? "text-white/85" : "text-neutral-500"}`}>
+                  {description}
+                </p>
               </div>
-              <h3 className={`font-bold text-lg mb-2 ${highlight ? "text-white" : "text-neutral-900"}`}>
-                {title}
-              </h3>
-              <p className={`text-sm leading-relaxed ${highlight ? "text-white/85" : "text-neutral-500"}`}>
-                {description}
-              </p>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>
